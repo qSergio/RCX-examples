@@ -1,0 +1,93 @@
+---
+title: "Ejemplo1"
+author: "Sergio Nieto"
+date: "01/01/2018"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+
+data(diamond)
+```
+
+# Inputs {#Inputs}
+```{r input-panel-simple}
+inputPanel(checkboxGroupInput('checkGroup',label='Checkbox Group',
+                              choices=list("Choice 1"=1,"Choice 2"=2,"Choice 3"=3),
+                              selected = 1))
+
+```
+
+
+```{r build-selector,echo=FALSE}
+selectInput(inputId='ExampleDropDown',
+
+            label='Please make a selection',
+
+            choices=list('Value 1'=1,
+
+                         'Value 2'=2,
+
+                         'Value 3'=3))
+```
+
+```{r select-print-drop-down,echo=FALSE}
+selectInput(inputId='ExampleDropDown', label='Please make a selection',
+
+            choices=list('Value 1'=1,
+
+                         'Value 2'=2,
+
+                         'Value 3'=3))
+
+renderPrint(input$ExampleDropDown)
+```
+
+```{r common-inputs,echo=FALSE}
+
+
+
+sliderInput(inputId='SliderSample', label='This is a slider',
+
+            min=0, max=10, value=5)
+
+textInput(inputId='TextSample', label='Space to enter text')
+
+checkboxInput(inputId='CheckSample', label='Single check box')
+
+checkboxGroupInput(inputId='CheckGroupSample',
+
+                   label='Multiple check boxes',
+
+                   choices=list('A', 'B', 'C'))
+
+radioButtons(inputId='RadioSample', label='Radio button',
+
+             choices=list('A', 'B', 'C'))
+
+dateInput(inputId='DateChoice', label='Date Selector')
+```
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r shiny-datatable-diamonds,echo=FALSE}
+data(diamonds, package='ggplot2')
+
+renderDataTable(diamonds)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
