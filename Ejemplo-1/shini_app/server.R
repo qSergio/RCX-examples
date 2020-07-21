@@ -8,10 +8,18 @@
 #
 
 library(shiny)
+library(ggplot2)
 
+data(diamonds, package='ggplot2')
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
-
+    output$HistPlot <- renderPlot({
+        
+        ggplot(diamonds, aes_string(x=input$VarToPlot)) +
+            
+            geom_histogram(bins=30)
+        
+    })
     # output$distPlot <- renderPlot({
     # 
     #     # generate bins based on input$bins from ui.R
@@ -22,5 +30,5 @@ shinyServer(function(input, output, session) {
     #     hist(x, breaks = bins, col = 'darkgray', border = 'white')
     # 
     # })
-
+    session$allowReconnect("force")
 })
