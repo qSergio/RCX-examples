@@ -84,6 +84,15 @@ data(diamonds, package = "ggplot2")
 diamonds
 ```
 
+```{r, echo=FALSE}
+
+numericInput("rows", "How many cars?", 5)
+
+renderTable({
+  head(cars, input$rows)
+})
+```
+
 ## Including Plots
 
 You can also embed plots, for example:
