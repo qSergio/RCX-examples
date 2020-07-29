@@ -6,8 +6,8 @@ output: html_notebook
 ## Install necessary packages
 
 ```{r, eval = FALSE}
-pkgs <- c("keras", "lime", "rsample", "recipes", "yardstick", "corrr")
-install.packages(pkgs)
+#pkgs <- c("keras", "lime", "rsample", "recipes", "yardstick", "corrr")
+#install.packages(pkgs)
 ```
 
 ```{r, include = FALSE}
@@ -43,6 +43,11 @@ if(!file.exists("customer_churn.csv")){
   ) 
 }
 
+## Setup lime::predict_model() function for keras
+#predict_model.keras.models.Sequential <- function(x, newdata, type, ...) {
+#  pred <- predict_proba(object = x, x = as.matrix(newdata))
+#  data.frame(Yes = pred, No = 1 - pred)
+#}
 churn_data_raw <- read_csv("customer_churn.csv")
 ```
 
