@@ -1,8 +1,6 @@
-# RCX-examples
+# RCX-churn example
 
-Algunos ejemplos de aplicaciones de ML usando R.
+Inicialmente es un ejemplo de un blog para reprodicr y modificar para tener un EDA más completo.
 
-Algunas fueron hechas en cursos anteriores.
-
-Otras están basadas en ejemplos de los tutoriales de shiny.
+En construcción la aplicación de shiny.
 
