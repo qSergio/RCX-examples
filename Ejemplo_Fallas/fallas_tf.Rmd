@@ -3,7 +3,9 @@ title: "Detectando Fallas con R"
 output: html_notebook
 ---
 
-## Las librerías usadas:
+## 
+
+Las librerías usadas:
 
 ```{r, eval = FALSE}
 #pkgs <- c("keras", "lime", "rsample", "recipes", "yardstick", "corrr")
@@ -19,31 +21,28 @@ library(recipes)
 library(yardstick)
 library(corrr)
 library(tensorflow)
+library(readr)
 ```
 
-## Dataset de Fallas en aparatos.
+## 
+
+Dataset de Fallas en aparatos con información sobre telemetría.
 
 
 ```{r, echo = FALSE}
-library(tidyverse)
 
-if(!file.exists("customer_churn.csv")){
-  download.file(
-    "https://raw.githubusercontent.com/rstudio/keras-customer-churn/master/data/WA_Fn-UseC_-Telco-Customer-Churn.csv",
-    "customer_churn.csv"
-  ) 
-}
+device_failure <- read_csv("Documents/Rproyectos/RCX-examples/Ejemplo_Fallas/device_failure.csv")
+View(device_failure)
 
 ## Setup lime::predict_model() function for keras
 #predict_model.keras.models.Sequential <- function(x, newdata, type, ...) {
 #  pred <- predict_proba(object = x, x = as.matrix(newdata))
 #  data.frame(Yes = pred, No = 1 - pred)
 #}
-churn_data_raw <- read_csv("customer_churn.csv")
 ```
 
 ```{r}
-glimpse(churn_data_raw)
+glimpse(device_failure)
 ```
 
 
